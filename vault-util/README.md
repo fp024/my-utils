@@ -44,3 +44,42 @@
   ![image-20230811204716376](doc-resources/image-20230811204716376.png)
 
   
+
+
+
+## 어쩌다 보니.. `spring-cloud-starter-vault-config` 를 사용하게 되었는데...
+
+Spring Boot 환경에서는 이거 사용하는게 편하겠다. 이걸 사용하면 application.yml에 설정할 값들을 vault 서버에 저장해두고 바로 치환해서 사용할 수 가 있다.
+
+`스프링 시큐리티 인 액션` 책의 12장을 보다가 ... 저자님 예제를 보니 깃허브의 클라이언트 ID와 클라이언트 비밀번호 평문이 `application.properties`에 평문으로 입력되어 있어서 그걸 vault 서버에 저장해서 사용해보고 싶었는데..
+
+내 유틸리티 클래스로는 `application.yml`에 고정으로 적힌 값의 치환은 불가능해서, `spring-cloud-starter-vault-config`를 사용해 봤는데... 아주 원할하게 잘 되었다.
+
+```yml
+# application.yml
+spring:
+  config:
+    import: vault://
+  cloud:
+    vault:
+      uri: http://lvm.vault-server:8200
+      kv:
+        backend: kv_study_project
+        default-context: spring_security_in_action
+      # token: 여기에 설정하지 않았을 경우.
+      # ~/.vault-token 경로에 토큰 파일이 저장되어 있어야함.
+      # Windows 환경이라면 %USERPROFILE%/.vault-token 파일에 저장해야함.
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: ${github_client_id}
+            client-secret: ${github_client_secret}
+```
+
+* `${github_client_id}`, `${github_client_secret}`가 vault 서버에 저장된 값으로 알아서 치환된다.
+* 토큰은 원래는 별도의 properties 파일을 `spring.config.additional-location` 설정으로 처리를 하고 싶긴했는데, 어떻게 해도 로드가 안되서.. 토큰 로드 실패 예외로그 메시지에서 알려줬던 방식 중 하나인 ... 사용자 홈 경로에 `.vault-token` 파일을 두고 실행하니 잘 동작 하였다.
+
+#### 결국 ... spring-cloud-starter-vault-config의 사용법을 잘 아는게 더 나을 것 같음. 😅😅😅
+
