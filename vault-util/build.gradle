@@ -1,0 +1,58 @@
+plugins {
+  id 'java-library'
+  id 'maven-publish'
+  id "io.freefair.lombok" version "${lombokPluginVersion}"
+}
+
+// > gradle clean test publishToMavenLocal
+// https://docs.gradle.org/current/userguide/publishing_maven.html
+publishing {
+  publications {
+    maven(MavenPublication) {
+      groupId = 'org.fp024.util'
+      artifactId = 'vault-util'
+      version = '0.0.1-SNAPSHOT'
+
+      from components.java
+    }
+  }
+}
+
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of("${javaVersion}")
+  }
+}
+
+compileJava.options.encoding = "${projectEncoding}"
+compileTestJava.options.encoding = "${projectEncoding}"
+
+repositories {
+  mavenCentral()
+  maven { url 'https://repo.spring.io/milestone' }
+}
+
+dependencies {
+
+  implementation "org.springframework.vault:spring-vault-core:${springVaultVersion}"
+
+  testImplementation "org.apache.logging.log4j:log4j-slf4j2-impl:${log4jVersion}"
+  testImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
+  testRuntimeOnly "org.junit.platform:junit-platform-launcher"
+
+  testImplementation "org.mockito:mockito-junit-jupiter:${mockitoVersion}"
+  testImplementation "org.assertj:assertj-core:${assertJVersion}"
+}
+
+tasks.named('test') {
+  // Use JUnit Platform for unit tests.
+  /*
+    터미널에서 테스트 클래스 실행 예시
+    > gradlew test --tests *AddUserMainTest.testAddUser
+  */
+  useJUnitPlatform()
+  testLogging {
+    outputs.upToDateWhen { false }
+    showStandardStreams = true
+  }
+}
