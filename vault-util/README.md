@@ -1,5 +1,9 @@
 # vault-util
 
+> 💡 스프링 6.x, 스프링부트 3.x 호환 버전
+>
+> * `3.0.0-SNAPSHOT` 버전은 최신 버전 호환용으로 사용하기로함..
+>
 > 토큰 방식으로 아주 간단하게 vault를 읽기만 하는 모듈인데.. 
 >
 > 차차 개선해나아가자 ~ 😅
@@ -32,7 +36,8 @@
   
   dependencies {
     ... // 모듈의 디펜던시 추가
-    implementation 'org.fp024.util:vault-util:0.0.1-SNAPSHOT'
+    implementation 'org.fp024.util:vault-util:3.0.0-SNAPSHOT'
+    // implementation "org.fp024.util:vault-util:${vaultUtilVersion}"
     ...
   }
   ```

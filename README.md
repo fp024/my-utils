@@ -13,6 +13,11 @@
 * 스터디를 하다보니, app key, DB 암호들을 따로 관리하기가 귀찮아서 vault를 Docker나 가상머신에 설치하고 각 스터디 프로젝트에서 vault에 접속해서 키에 대한 값을 가져오는 식으로 진행 하였는데...
 
   프로젝트마다 Vault Util 클래스를 또 중복으로 만들게 되서 맨 처음으로 이 기능을 모듈로 분리해보았다.
+  
+* [vault-util-2x](vault-util-2x)
+
+  * Spring 5.x, Spring Boot 2.x 호환용
+
 
 
 
