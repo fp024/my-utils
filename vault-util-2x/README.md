@@ -22,24 +22,32 @@
 
 ## 사용처 프로젝트에서 적용 방법
 
-* build.gradle
+build.gradle
 
-  ```groovy
-  repositories {
-    mavenLocal()  // maven 로컬 레파지토리 추가
-    mavenCentral()
-    ...
+```groovy
+repositories {
+  // mavenLocal을 사용할 때는 content 필터링을 해줘야한다.
+  mavenLocal {    
+    content {
+      includeGroup "org.fp024.util"
+    }
   }
+  mavenCentral()
+}
+...
+
+dependencies {
+  ... // 모듈의 디펜던시 추가
+  implementation 'org.fp024.util:vault-util:2.0.0-SNAPSHOT'
+  // implementation "org.fp024.util:vault-util:${vaultUtilVersion}"
   ...
-  
-  dependencies {
-    ... // 모듈의 디펜던시 추가
-    implementation 'org.fp024.util:vault-util:2.0.0-SNAPSHOT'
-    ...
-  }
-  ```
+}
+```
 
-  
+* `mavelLocal()`을 사용할 때는 필요한 커스텀 라이브러리만 포함되도록 필터링을 해주는 것이 좋음.
+  * querydsl-apt의 classifier 관련해서 문제를 겪어서 검색을 해보고 알게되었다. 😅
+  * https://github.com/gradle/gradle/issues/18276#issuecomment-921628988
+    
 
 ---
 
