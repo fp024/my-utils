@@ -50,8 +50,8 @@ public class VaultClient {
   private String token() {
     Path vaultTokenPath = Paths.get(System.getProperty("user.home"), ".vault-token");
     try (InputStream inputStream = Files.newInputStream(vaultTokenPath)) {
-      return StreamUtils.copyToString(inputStream, UTF_8);
-    } catch (IOException e) {
+      return StreamUtils.copyToString(inputStream, UTF_8).trim();
+    } catch (Exception e) {
       throw new IllegalArgumentException("사용자 홈 경로의 토큰 로드 실패", e);
     }
   }
