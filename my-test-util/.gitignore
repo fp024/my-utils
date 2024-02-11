@@ -18,5 +18,8 @@ target
 out
 *.log
 
+# VSCode
+.vscode
+
 # 토큰 값을 저장하는 프로퍼티는 git에 포함하지 않는다.
 vault-token.properties

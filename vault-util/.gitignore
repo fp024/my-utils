@@ -15,5 +15,8 @@ target
 .idea
 *.iml
 
+# VSCode
+.vscode
+
 out
 *.log
