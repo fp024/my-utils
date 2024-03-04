@@ -47,7 +47,7 @@
     // mavenLocal을 사용할 때는 content 필터링을 해줘야한다.
     mavenLocal {    
       content {
-        includeGroup "org.fp024.util"
+        includeGroup "org.fp024.test.util"
       }
     }
     mavenCentral()
