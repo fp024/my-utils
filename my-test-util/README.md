@@ -44,7 +44,12 @@
 
   ```groovy
   repositories {
-    mavenLocal()  // maven 로컬 레파지토리 추가
+    // mavenLocal을 사용할 때는 content 필터링을 해줘야한다.
+    mavenLocal {    
+      content {
+        includeGroup "org.fp024.util"
+      }
+    }
     mavenCentral()
     ...
   }
@@ -52,9 +57,9 @@
   
   dependencies {
     ... // 모듈의 디펜던시 추가
-    implementation 'org.fp024.test.util:my-test-util:0.0.1-SNAPSHOT'
+    testImplementation 'org.fp024.test.util:my-test-util:0.0.1-SNAPSHOT'
     ...
   }
   ```
-
+  
   
