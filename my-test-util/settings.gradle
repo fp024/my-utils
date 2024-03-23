@@ -1,1 +1,9 @@
 rootProject.name = 'my-test-util'
+
+dependencyResolutionManagement {
+  versionCatalogs {
+    libs {
+      from(files("../gradle/libs.versions.toml"))
+    }
+  }
+}

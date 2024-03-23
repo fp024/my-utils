@@ -1,7 +1,7 @@
 plugins {
   id 'java-library'
   id 'maven-publish'
-  id "io.freefair.lombok" version "${lombokPluginVersion}"
+  alias(libs.plugins.lombok)
 }
 
 // > gradle clean test publishToMavenLocal
@@ -32,17 +32,16 @@ repositories {
 }
 
 dependencies {
-  implementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
-  implementation "org.mockito:mockito-core:${mockitoVersion}"
-  implementation "org.slf4j:slf4j-api:${slf4jVersion}"
-
-  testImplementation "org.apache.logging.log4j:log4j-slf4j2-impl:${log4jVersion}"
-
+  
+  implementation (libs.junit.jupiter)
+  implementation (libs.mockito.core)
+  implementation (libs.slf4j.api)
+  
+  testImplementation (libs.log4j.slf4j2.impl)
+  
   testRuntimeOnly "org.junit.platform:junit-platform-launcher"
-  testImplementation "org.assertj:assertj-core:${assertJVersion}"
-
-  // 예전엔 JodaTime을 잘 사용했었는데... 그냥 궁금해서 테스트에만 추가해서 사용해보자!
-  testImplementation "joda-time:joda-time:${jodaTimeVersion}"
+  testImplementation (libs.assertj.core)
+  testImplementation (libs.joda.time)
 }
 
 tasks.named('test') {

@@ -1,1 +1,9 @@
 rootProject.name = 'vault-util'
+
+dependencyResolutionManagement {
+  versionCatalogs {
+    libs {
+      from(files("../gradle/libs.versions.toml"))
+    }
+  }
+}

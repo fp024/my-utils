@@ -1,7 +1,7 @@
 plugins {
   id 'java-library'
   id 'maven-publish'
-  id "io.freefair.lombok" version "${lombokPluginVersion}"
+  alias(libs.plugins.lombok)
 }
 
 // > gradle clean test publishToMavenLocal
@@ -33,13 +33,12 @@ repositories {
 
 dependencies {
 
-  implementation "org.springframework.vault:spring-vault-core:${springVaultVersion}"
+  implementation (libs.spring.vault.core.v2)
 
-  testImplementation "org.apache.logging.log4j:log4j-slf4j2-impl:${log4jVersion}"
-  testImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
+  testImplementation (libs.log4j.slf4j2.impl)
+  testImplementation (libs.junit.jupiter)  
   testRuntimeOnly "org.junit.platform:junit-platform-launcher"
-
-  testImplementation "org.assertj:assertj-core:${assertJVersion}"
+  testImplementation (libs.assertj.core)
 }
 
 tasks.named('test') {
