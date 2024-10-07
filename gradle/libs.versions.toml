@@ -5,11 +5,11 @@ lombok-plugin = "8.6"
 
 ### libraries ###
 slf4j = "2.0.16"
-log4j = "2.23.1"
-junit = "5.11.0"
-mockito = "5.12.0"
+log4j = "2.24.1"
+junit = "5.11.2"
+mockito = "5.14.1"
 assertj = "3.26.3"
-joda-time = "2.12.7"
+joda-time = "2.13.0"
 
 ### Spring Vault ###
 #   https://spring.io/projects/spring-vault
