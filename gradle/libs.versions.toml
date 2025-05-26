@@ -7,14 +7,14 @@ lombok-plugin = "8.13.1"
 slf4j = "2.0.17"
 log4j = "2.24.3"
 junit = "5.12.2"
-mockito = "5.17.0"
+mockito = "5.18.0"
 assertj = "3.27.3"
 joda-time = "2.14.0"
 
 ### Spring Vault ###
 #   https://spring.io/projects/spring-vault
 #   https://mvnrepository.com/artifact/org.springframework.vault/spring-vault-core
-spring-vault = "3.1.3"
+spring-vault = "3.2.0"
 spring-vault-v2 = "2.3.4"
 
 
