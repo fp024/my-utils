@@ -5,8 +5,10 @@ lombok-plugin = "8.13.1"
 
 ### libraries ###
 slf4j = "2.0.17"
-log4j = "2.24.3"
-junit = "5.12.2"
+slf4j-legacy = "2.0.16"
+log4j = "2.25.0"
+log4j-legacy = "2.24.3" # Java 8 마지막 지원 버전
+junit = "5.13.3"
 mockito = "5.18.0"
 assertj = "3.27.3"
 joda-time = "2.14.0"
@@ -22,6 +24,8 @@ spring-vault-v2 = "2.3.4"
 [libraries]
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
 log4j-slf4j2-impl = { module = "org.apache.logging.log4j:log4j-slf4j2-impl", version.ref = "log4j" }
+slf4j-api-legacy = { module = "org.slf4j:slf4j-api", version.ref = "slf4j-legacy" }
+log4j-slf4j2-impl-legacy = { module = "org.apache.logging.log4j:log4j-slf4j2-impl", version.ref = "log4j-legacy" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
 assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj" }
 
